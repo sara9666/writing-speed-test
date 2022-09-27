@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8">
+
+    <style>
+             *{
+   padding: 0; 
+   margin: 0;
+   font-family:sans-serif;
+}
+body
+ {
+    height: 100vh;
+    width: 100;
+    background:linear-gradient(rgb(17, 17, 17),#222);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ body::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgb(18, 4, 97);
+  position: absolute;
+  z-index: -1 ;
+  clip-path: circle( 40% at right  70%);
+}
+ .container {
+width: 85%;
+height: 85%;
+background-color:rgba(255,255,255,0.1);
+border-radius: 20px;
+overflow: hidden;
+}
+nav{
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 80%;
+margin: auto;
+padding: 20px;
+}
+nav .logo {
+    color: rgb(206, 213, 245);
+    text-decoration: none;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+nav ul li{
+    display: inline-block;
+    margin: 0 25px;
+}
+nav ul li a{
+    color: rgb(206, 213, 245);
+
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 500;
+}
+nav ul li a:hover{
+    color: rgb(8, 8, 156);
+}
+ div footer{
+    background: rgb(102, 110, 138);
+    color: rgb(7, 0, 128);
+    text-align: center;
+    padding: 10px 15px;
+}
+div footer{
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: rgb(15, 17, 113);
+  text-align: center;
+  font-size:medium ;
+}
+div form {
+  width: 45%;
+  height: 70px;
+  margin:0 25% ;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 40px;
+  resize: none;
+  align-items: center;
+  text-align: center;
+  
+}
+div input{
+  
+  width: 30%;
+  height: 40px;
+  margin:0 30% ;
+  box-sizing: border-box;
+  border: 2px solid rgb(11, 8, 101);
+  border-radius: 4px;
+  background-color: hwb(240 98% 1%);
+  font-size: 25px;
+  resize: none;
+  align-items: center;
+  text-align: center;
+
+}
+#timer{
+  width: 10%;
+  height: 25px;
+  margin:0 15% ;
+  box-sizing: border-box;
+  border: 2px solid rgb(80, 70, 225);
+  border-radius: 4px;
+  background-color:rgb(31, 7, 134) ;
+  font-size: 15px;
+  resize: none;
+  align-items: center;
+  text-align: center;
+}
+#scor{
+  margin:0 10% ;
+  font-size: 20px;
+  resize: none;
+  align-items: center;
+  text-align: center;
+  font-style: italic;
+}
+
+    </style>
+        
+    <title>play with me</title>
+ </head>
+  <body>
+    <div class ="container">
+    <nav>
+    <a class="logo" href ="#">GAME T.S.T</a>
+       <ul>
+         <li><a href="#">Home</a></li>
+  
+         <li><a href="#">About</a></li>
+         <select name="levels" id="levels" >levels
+          <option value="easy" id="esey">esey</option>
+          <option value="medium" id="medium">medium</option>
+          <option value="Difficult" id="Difficult" >Difficult</option>
+         </select>
+       </ul>
+      </nav>
+      <div id="timer"></div>
+      
+<div id="scor">
+<h4>Score :
+    <span id="score">0</span>
+</h4>  
+<h4 id="message"></h4>
+</div><br><br>
+<div class="form">
+                
+            <form id="labal"> </form><br>
+            <input type="text"  placeholder="start typing.." id="word-input" autofocus>
+</div>
+                    
+            </div>
+            <div class="footer">
+                    <footer>
+                        <p>© 2022 , Beroo , Sara </p>
+                        <p></p>
+                        <p><a href="https://www.typingtest.com/">practice more </a></p>
+                    </footer>
+            </div>
+    
+            </div>
+    <script>
+         window.onload = function() {
+var count=50;
+var counter=setInterval(timer, 1000);
+var timerDiv = document.getElementById('timer');
+var link = document.getElementById('link');
+function timer()
+{
+count=count-1;
+if (count <= 0)
+{
+clearInterval(counter);
+link.style.display = '';
+timerDiv.innerHTML="";
+return;
+}
+timerDiv.innerHTML=count + " ثوانى";
+}
+}
+
+        window.addEventListener("load", intionlize);
+let score = 0;
+let isplaying;
+const scoredisplay = document.getElementById("score");
+const message = document.getElementById("message");
+const currentword = document.getElementById("labal");
+const wordInput = document.getElementById("word-input");
+let items= [
+"arabic","italian","armenian","bengali","chinese",
+      "croatian","dutch","english","french",
+      "german","hindi","japanese","korean","malay","romanian",
+      "russian","spanish","turkish","uzbek"
+];
+
+
+function matchwords() {
+if (wordInput.value === labal.innerHTML) {
+message.innerHTML = "Keep up the good work";
+
+return true;
+} else {
+message.innerHTML = "";
+return false;
+}
+}
+
+function check() {
+if (matchwords()) {
+isplaying = true;
+wordInput.value = "";
+showword(items);
+score++;
+}
+scoredisplay.innerHTML = score;
+}
+
+function showword(items) {
+const randIndex = Math.floor(Math.random() * items.length);
+labal.innerHTML = items[randIndex];
+}
+
+
+function intionlize() {
+showword(items);
+wordInput.addEventListener("input", check);
+}
+
+    </script>
+
+</div>
+  </body>
+</html>
